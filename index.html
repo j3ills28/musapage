@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privater Kochservice | Individuelle Küche für besondere Momente</title>
+<meta name="description" content="Privater Kochservice für besondere Anlässe: Individuelle Menüabsprache, frische Zubereitung vor Ort oder zur Abholung. Persönlich, hochwertig, mit Leidenschaft gekocht.">
+<meta name="keywords" content="Privatkoch, Kochservice, privater Koch buchen, individuelles Menü, Kochen vor Ort, Event-Koch">
+<meta property="og:title" content="Privater Kochservice – Individuelle Küche für besondere Momente">
+<meta property="og:description" content="Persönliche Menüabsprache, frische Zutaten, Kochen vor Ort oder Abholung. Jetzt Termin anfragen.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black: #0f0d0b;
+    --charcoal: #1a1613;
+    --charcoal-2: #241f1a;
+    --gold: #c9a15a;
+    --gold-light: #e8cd8a;
+    --gold-dim: #8a7245;
+    --cream: #f5efe3;
+    --cream-2: #ece3d2;
+    --ink: #2b241c;
+    --taupe: #a89a83;
+    --ember: #a8481f;
+    --line: rgba(201,161,90,0.25);
+    --shadow: 0 20px 50px rgba(0,0,0,0.35);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+  .script{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  ::selection{background:var(--gold); color:var(--black);}
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:.78rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  section[data-theme="dark"] .eyebrow{color:var(--gold-light);}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;}
+  .reveal.d2{transition-delay:.16s;}
+  .reveal.d3{transition-delay:.24s;}
+  .reveal.d4{transition-delay:.32s;}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(15,13,11,0.0);
+    transition: background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
+    padding:26px 0;
+  }
+  header.scrolled{
+    background:rgba(15,13,11,0.92);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    box-shadow:0 8px 30px rgba(0,0,0,.25);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1180px; margin:0 auto; padding:0 24px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    color:var(--cream);
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  .brand svg{width:34px;height:34px;flex-shrink:0;}
+  .brand span em{
+    font-style:normal; color:var(--gold-light); font-weight:500;
+    display:block; font-size:.6rem; letter-spacing:.28em; text-transform:uppercase; margin-top:2px;
+  }
+  .navlinks{display:flex; gap:34px; align-items:center;}
+  .navlinks a{
+    color:var(--cream); font-size:.86rem; letter-spacing:.03em; font-weight:500;
+    position:relative; padding-bottom:6px;
+  }
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold);
+    transition:width .3s var(--ease);
+  }
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{
+    border:1px solid var(--gold); color:var(--gold-light) !important;
+    padding:10px 22px; border-radius:2px; font-size:.8rem !important;
+    letter-spacing:.08em !important; text-transform:uppercase;
+    transition:background .3s var(--ease), color .3s var(--ease);
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:var(--gold); color:var(--black) !important;}
+  .burger{display:none; width:26px; height:20px; position:relative; cursor:pointer; background:none; border:none; z-index:1100;}
+  .burger span{
+    position:absolute; left:0; width:100%; height:1.5px; background:var(--cream);
+    transition:transform .3s var(--ease), opacity .3s var(--ease);
+  }
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:9px;}
+  .burger span:nth-child(3){top:18px;}
+  .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    background:
+      radial-gradient(ellipse at 75% 30%, rgba(169,105,45,0.22), transparent 55%),
+      linear-gradient(160deg, #0f0d0b 0%, #171310 55%, #0f0d0b 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(201,161,90,0.035) 0px, rgba(201,161,90,0.035) 1px, transparent 1px, transparent 90px);
+    pointer-events:none;
+  }
+  .hero-plate{
+    position:absolute; right:120px; top:50%; transform:translateY(-50%);
+    width:640px; height:640px; opacity:.9;
+  }
+  .hero-plate img{width:100%;height:100%;object-fit:cover;object-position:center;display:block; }
+  .hero-plate svg{width:100%;height:100%;}
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:1180px; margin:0 auto; padding:160px 24px 100px;
+    width:100%;
+  }
+  .stars{display:flex; gap:6px; margin-bottom:22px;}
+  .stars svg{width:20px;height:20px;fill:var(--gold);}
+  .hero-inner h1{
+    color:var(--cream);
+    font-size:clamp(2.6rem, 6.2vw, 5.2rem);
+    max-width:820px;
+  }
+  .hero-inner h1 .accent{
+    color:var(--gold-light);
+    display:block;
+  }
+  .hero-sub{
+    color:var(--taupe);
+    font-size:clamp(1rem, 1.5vw, 1.2rem);
+    max-width:520px;
+    margin-top:26px;
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500;
+    font-size:1.4rem;
+    color:var(--gold-light);
+  }
+  .hero-desc{
+    color:#c9c0af;
+    max-width:540px;
+    margin-top:18px;
+    font-size:1.02rem;
+  }
+  .hero-actions{display:flex; gap:18px; margin-top:44px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 34px;
+    font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
+    border-radius:2px;
+    transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+  }
+  .btn-primary{background:var(--gold); color:var(--black);}
+  .btn-primary:hover{background:var(--gold-light); transform:translateY(-2px);}
+  .btn-outline{border:1px solid rgba(245,239,227,0.35); color:var(--cream);}
+  .btn-outline:hover{border-color:var(--gold); color:var(--gold-light); transform:translateY(-2px);}
+
+  .hero-marks{
+    display:flex; gap:48px; margin-top:80px; flex-wrap:wrap;
+    border-top:1px solid rgba(201,161,90,0.18); padding-top:34px;
+  }
+  .hero-mark{color:var(--taupe); font-size:.82rem; display:flex; align-items:center; gap:10px;}
+  .hero-mark svg{width:18px;height:18px; stroke:var(--gold); flex-shrink:0;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:120px 0; position:relative;}
+  section[data-theme="dark"]{background:var(--black); color:var(--cream);}
+  section[data-theme="dark"] .taupe-text{color:var(--taupe);}
+  section[data-theme="cream"]{background:var(--cream);}
+  section[data-theme="cream-2"]{background:var(--cream-2);}
+
+  .section-head{max-width:640px; margin-bottom:64px;}
+  .section-head h2{font-size:clamp(2rem, 3.6vw, 2.9rem);}
+  .section-head p{margin-top:18px; color:var(--taupe); font-size:1.05rem;}
+  section[data-theme="cream"] .section-head p, section[data-theme="cream-2"] .section-head p{color:#6b5f4d;}
+
+  .divider{width:64px; height:1px; background:var(--gold); margin:0 auto 26px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:80px; align-items:center;
+  }
+  .about-portrait{
+    position:relative; border-radius:4px; overflow:hidden;
+    aspect-ratio:4/5;
+    background:linear-gradient(160deg,#241f1a,#0f0d0b);
+    /* display:flex; align-items:center; justify-content:center; */ 
+    border:1px solid var(--line);
+  }
+ .about-portrait-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;      /* schneidet das Bild an den Rand des Rahmens */
+  border-radius:2px;
+  border:1px solid rgba(201,161,90,0.35); /* das ist jetzt der eigentliche Goldrahmen */
+}
+
+.about-portrait-inner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top; /* Bildausschnitt nach Bedarf anpassen */
+  display:block;
+}
+  .about-portrait svg{width:62%;}
+  /*.about-portrait::after{
+    content:"";
+    position:absolute; inset:14px; border:1px solid rgba(201,161,90,0.35); pointer-events:none;
+  }*/ 
+  .about-badge{
+    position:absolute; bottom:-26px; left:-26px;
+    background:var(--gold); color:var(--black);
+    padding:22px 26px; border-radius:2px;
+    box-shadow:var(--shadow);
+    font-family:'Fraunces', serif;
+  }
+  .about-badge strong{display:block; font-size:1.8rem; line-height:1;}
+  .about-badge span{font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-family:'Work Sans',sans-serif; font-weight:600;}
+  .about-text h2{font-size:clamp(1.9rem,3.4vw,2.6rem); margin-bottom:24px;}
+  .about-text p{color:#5a4f3f; margin-bottom:18px; font-size:1.03rem;}
+  .about-text p.lead{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.35rem; color:var(--ember); font-weight:500;}
+  .about-features{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-top:40px;
+  }
+  .about-feature{display:flex; gap:14px; align-items:flex-start;}
+  .about-feature svg{width:26px; height:26px; stroke:var(--ember); flex-shrink:0; margin-top:2px;}
+  .about-feature strong{display:block; font-size:.94rem; font-weight:600; margin-bottom:3px;}
+  .about-feature p{font-size:.86rem; color:#7a6d59; margin:0;}
+
+  /* ---------- SERVICES ---------- */
+  .service-cols{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  .service-col{padding:52px 44px; position:relative;}
+  .service-col + .service-col{border-left:1px solid var(--line);}
+  .service-col h3{font-size:1.3rem; color:var(--gold-light); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
+  .service-col h3 svg{width:24px; height:24px; stroke:var(--gold);}
+  .checklist{list-style:none;}
+  .checklist li{
+    display:flex; gap:14px; padding:13px 0;
+    border-bottom:1px solid rgba(201,161,90,0.12);
+    font-size:.98rem;
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist li svg{width:18px; height:18px; stroke:var(--gold); flex-shrink:0; margin-top:2px;}
+
+  .equip-note{margin-top:26px; padding-top:22px; border-top:1px dashed rgba(201,161,90,0.25);}
+  .equip-note h4{font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; color:var(--taupe); margin-bottom:14px; font-family:'Work Sans',sans-serif; font-weight:600;}
+
+  .prep-cards{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:56px;}
+  .prep-card{
+    background:var(--charcoal); border:1px solid var(--line); border-radius:4px; padding:38px;
+    transition:transform .4s var(--ease), border-color .4s var(--ease);
+  }
+  .prep-card:hover{transform:translateY(-6px); border-color:var(--gold);}
+  .prep-card svg{width:40px; height:40px; stroke:var(--gold); margin-bottom:18px;}
+  .prep-card h4{color:var(--gold-light); font-size:1.15rem; margin-bottom:10px;}
+  .prep-card p{color:var(--taupe); font-size:.94rem;}
+
+  /* ---------- PRICING ---------- */
+  .price-table{
+    background:var(--black); color:var(--cream); border-radius:4px; overflow:hidden;
+    box-shadow:var(--shadow); border:1px solid var(--line);
+  }
+  .price-head{padding:44px 44px 30px; border-bottom:1px solid var(--line);}
+  .price-head h3{color:var(--gold-light); font-size:1.5rem; margin-bottom:10px;}
+  .price-head p{color:var(--taupe); font-size:.94rem; max-width:520px;}
+  .price-rows{padding:10px 44px 8px;}
+  .price-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 0; border-bottom:1px solid rgba(201,161,90,0.14);
+    transition:padding-left .3s var(--ease);
+  }
+  .price-row:hover{padding-left:8px;}
+  .price-row:last-child{border-bottom:none;}
+  .price-row .pl{display:flex; align-items:center; gap:14px; font-size:1rem;}
+  .price-row .pl svg{width:20px;height:20px; stroke:var(--gold);}
+  .price-row .pr{font-family:'Fraunces',serif; font-size:1.4rem; color:var(--gold-light); font-weight:600;}
+  .price-note{padding:28px 44px 40px; color:var(--taupe); font-size:.88rem; border-top:1px solid var(--line); background:rgba(201,161,90,0.04);}
+
+  .extras-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:44px;}
+  .extra-card{
+    background:#fff; border:1px solid #e4d9c2; border-radius:4px; padding:34px 30px;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .extra-card:hover{transform:translateY(-6px); box-shadow:0 18px 38px rgba(60,45,20,0.12);}
+  .extra-card svg{width:30px;height:30px; stroke:var(--ember); margin-bottom:16px;}
+  .extra-card h4{font-size:1.05rem; margin-bottom:10px;}
+  .extra-card p{font-size:.88rem; color:#6b5f4d;}
+  .extra-card .fig{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--ember); margin-top:14px; display:block;}
+
+  .shop-variants{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px;}
+  .variant{background:#fff; border:1px solid #e4d9c2; border-radius:4px; padding:36px;}
+  .variant .num{
+    display:inline-block; font-family:'Fraunces',serif; color:var(--ember); font-size:.8rem;
+    letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; font-weight:600;
+  }
+  .variant h4{font-size:1.15rem; margin-bottom:12px;}
+  .variant p{font-size:.92rem; color:#6b5f4d; margin-bottom:8px;}
+  .variant ul{margin-top:14px; padding-left:0; list-style:none;}
+  .variant ul li{font-size:.87rem; color:#6b5f4d; padding:8px 0 8px 22px; position:relative; border-top:1px solid #eee2cc;}
+  .variant ul li::before{content:"—"; position:absolute; left:0; color:var(--gold-dim);}
+  .variant .price-tag{
+    display:inline-block; margin-top:18px; background:var(--cream-2); border:1px solid var(--gold);
+    color:var(--ember); font-family:'Fraunces',serif; font-weight:600; padding:8px 18px; border-radius:2px; font-size:.95rem;
+  }
+  .fine-print{
+    margin-top:30px; padding:22px 26px; border-left:3px solid var(--gold); background:#fff;
+    font-size:.88rem; color:#6b5f4d; border-radius:0 4px 4px 0;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  .gallery-card{
+    position:relative; border-radius:4px; overflow:hidden; aspect-ratio:1/1;
+    background:linear-gradient(155deg,#1a1613,#0f0d0b);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+    transition:transform .5s var(--ease);
+  }
+  .gallery-card img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}  
+  .gallery-card:hover{transform:translateY(-6px);}
+  .gallery-card svg{width:46%; transition:transform .6s var(--ease);}
+  .gallery-card:hover svg{transform:scale(1.08);}
+  .gallery-card .tag{
+    position:absolute; bottom:18px; left:18px; color:var(--gold-light);
+    font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; font-weight:600;
+    opacity:0; transform:translateY(8px);
+    transition:opacity .4s var(--ease), transform .4s var(--ease);
+  }
+  .gallery-card:hover .tag{opacity:1; transform:translateY(0);}
+  .gallery-card::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.55), transparent 45%);
+    opacity:0; transition:opacity .4s var(--ease);
+  }
+  .gallery-card:hover::before{opacity:1;}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; margin-top:20px;}
+  .steps::before{
+    content:""; position:absolute; top:24px; left:6%; right:6%; height:1px; background:var(--line);
+  }
+  .step{position:relative; padding:0 22px; text-align:left;}
+  .step .dot{
+    width:48px; height:48px; border-radius:50%; background:var(--black); border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; color:var(--gold-light); font-weight:600; margin-bottom:22px; position:relative; z-index:2;
+  }
+  .step h4{font-size:1rem; margin-bottom:10px; color:var(--cream);}
+  .step p{font-size:.87rem; color:var(--taupe);}
+
+  /* ---------- NOTICE BAND ---------- */
+  .notice-band{
+    background:var(--cream-2); border-top:1px solid #e4d9c2; border-bottom:1px solid #e4d9c2;
+  }
+  .notice-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .notice-col h3{font-size:1.2rem; margin-bottom:22px; display:flex; align-items:center; gap:12px;}
+  .notice-col h3 svg{width:24px;height:24px; stroke:var(--ember);}
+  .notice-col ul{list-style:none;}
+  .notice-col li{
+    display:flex; gap:12px; padding:12px 0; font-size:.92rem; color:#5a4f3f;
+    border-bottom:1px solid #e4d9c2;
+  }
+  .notice-col li:last-child{border-bottom:none;}
+  .notice-col li svg{width:16px;height:16px; stroke:var(--ember); flex-shrink:0; margin-top:3px;}
+
+  /* ---------- PHOTO POLICY ---------- */
+  .photo-band{
+    display:flex; align-items:center; gap:40px; background:var(--black); border-radius:4px;
+    padding:46px; border:1px solid var(--line);
+  }
+  .photo-band svg{width:70px; height:70px; stroke:var(--gold); flex-shrink:0;}
+  .photo-band p{color:var(--taupe); font-size:.96rem; margin:0;}
+  .photo-band strong{color:var(--cream); display:block; font-family:'Fraunces',serif; font-size:1.15rem; margin-bottom:8px; font-weight:600;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:flex-start;}
+  .contact-info h2{color:var(--cream); font-size:clamp(2rem,3.6vw,2.8rem); margin-bottom:20px;}
+  .contact-info > p{color:var(--taupe); margin-bottom:36px; max-width:440px;}
+  .contact-list{list-style:none;}
+  .contact-list li{
+    display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line);
+    color:var(--cream); font-size:.96rem;
+  }
+  .contact-list li svg{width:20px; height:20px; stroke:var(--gold); flex-shrink:0; margin-top:2px;}
+  .contact-list li span{color:var(--taupe); display:block; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px;}
+
+  form{background:var(--charcoal); border:1px solid var(--line); border-radius:4px; padding:44px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block; font-size:.76rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--taupe); margin-bottom:8px; font-weight:600;
+  }
+  .field input, .field select, .field textarea{
+    width:100%; background:var(--black); border:1px solid var(--line); color:var(--cream);
+    padding:13px 14px; font-family:'Work Sans',sans-serif; font-size:.94rem; border-radius:2px;
+    transition:border-color .3s var(--ease);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--gold);}
+  .field textarea{resize:vertical; min-height:100px;}
+  form .btn-primary{width:100%; justify-content:center; margin-top:6px; border:none; cursor:pointer;}
+  .form-foot{color:var(--taupe); font-size:.8rem; margin-top:16px; text-align:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--black); border-top:1px solid var(--line); padding:70px 0 30px; color:var(--taupe);}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:60px; padding-bottom:50px;}
+  .footer-brand{display:flex; align-items:center; gap:12px; color:var(--cream); font-family:'Fraunces',serif; font-size:1.15rem; margin-bottom:16px;}
+  .footer-brand svg{width:30px; height:30px;}
+  .footer-col h4{color:var(--cream); font-size:.85rem; letter-spacing:.05em; text-transform:uppercase; margin-bottom:18px; font-family:'Work Sans',sans-serif; font-weight:600;}
+  .footer-col ul{list-style:none;}
+  .footer-col li{margin-bottom:11px; font-size:.9rem;}
+  .footer-col a:hover{color:var(--gold-light);}
+  .footer-bottom{
+    border-top:1px solid var(--line); padding-top:26px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:.8rem;
+  }
+  .footer-bottom a{margin-right:22px;}
+  .footer-bottom a:hover{color:var(--gold-light);}
+
+  /* ---------- MODAL (Impressum/Datenschutz) ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(10,8,6,0.82); z-index:2000;
+    display:none; align-items:center; justify-content:center; padding:24px;
+    backdrop-filter:blur(4px);
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--cream); max-width:640px; width:100%; max-height:80vh; overflow-y:auto;
+    border-radius:4px; padding:44px; position:relative; border:1px solid var(--gold);
+  }
+  .modal h3{font-size:1.5rem; margin-bottom:18px; color:var(--ink);}
+  .modal p{font-size:.92rem; color:#5a4f3f; margin-bottom:14px;}
+  .modal-close{
+    position:absolute; top:20px; right:20px; background:none; border:none; cursor:pointer;
+    font-size:1.4rem; color:#6b5f4d; line-height:1;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    .about-grid, .contact-grid{grid-template-columns:1fr; gap:56px;}
+    .about-portrait{max-width:420px; margin:0 auto;}
+    .service-cols{grid-template-columns:1fr;}
+    .service-col + .service-col{border-left:none; border-top:1px solid var(--line);}
+    .extras-grid{grid-template-columns:1fr 1fr;}
+    .shop-variants{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:1fr 1fr; row-gap:40px;}
+    .steps::before{display:none;}
+    .notice-grid{grid-template-columns:1fr; gap:40px;}
+    .footer-grid{grid-template-columns:1fr; gap:36px;}
+    .hero-plate{opacity:.35; width:480px; height:480px; right:-160px;}
+  }
+  @media (max-width: 720px){
+    .navlinks{
+      position:fixed; top:0; right:0; height:100vh; width:78%; max-width:320px;
+      background:var(--black); flex-direction:column; justify-content:center; align-items:flex-start;
+      gap:26px; padding:0 40px; transform:translateX(100%); transition:transform .4s var(--ease);
+      box-shadow:-10px 0 40px rgba(0,0,0,0.3);
+    }
+    .navlinks.open{transform:translateX(0);}
+    .burger{display:block;}
+    .nav-cta{margin-top:10px;}
+    section{padding:80px 0;}
+    .hero-inner{padding:130px 24px 70px;}
+    .hero-marks{gap:26px 36px; margin-top:56px;}
+    .extras-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .about-badge{left:0; bottom:-20px;}
+    .price-head, .price-rows, .price-note{padding-left:26px; padding-right:26px;}
+    .photo-band{flex-direction:column; text-align:center;}
+    .steps{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header id="site-header">
+  <nav>
+    <a href="#home" class="brand">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" stroke="#c9a15a" stroke-width="1"/>
+        <path d="M24 12c-4 0-7 3-7 7 0 2 1 3.5 2 4.5-1 .5-1.5 1.5-1.5 2.5h13c0-1-.5-2-1.5-2.5 1-1 2-2.5 2-4.5 0-4-3-7-7-7z" stroke="#c9a15a" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M18 30h12v2a2 2 0 01-2 2H20a2 2 0 01-2-2v-2z" stroke="#c9a15a" stroke-width="1.4"/>
+        <path d="M16 33l4 4M32 33l-4 4" stroke="#c9a15a" stroke-width="1.2"/>
+      </svg>
+      <span>Privater Kochservice<em>Individuelle Küche</em></span>
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#preise">Preise</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#kontakt" class="nav-cta">Termin anfragen</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-plate" aria-hidden="true">
+    <!-- <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="190" stroke="#c9a15a" stroke-opacity="0.35" stroke-width="1"/>
+      <circle cx="200" cy="200" r="150" stroke="#c9a15a" stroke-opacity="0.5" stroke-width="1"/>
+      <circle cx="200" cy="200" r="80" fill="#241f1a" stroke="#c9a15a" stroke-opacity="0.6"/>
+      <path d="M170 175c8-10 25-12 34-2 8 9 16 24 6 36-9 11-24 8-34-2-9-9-13-24-6-32z" fill="#a8481f" opacity="0.55"/>
+      <path d="M195 150c0-14 8-24 8-24s8 10 8 24-4 18-8 18-8-4-8-18z" fill="#4b6b3a" opacity="0.5"/>
+      <circle cx="150" cy="230" r="9" fill="#a8481f" opacity="0.5"/>
+      <circle cx="245" cy="220" r="6" fill="#c9a15a" opacity="0.55"/>
+    </svg> --> 
+    <img src="images/burger.png" alt="Geiler Burger" />
+  </div>
+  <div class="hero-inner">
+    <div class="stars" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 1l3.4 7.2 7.6.9-5.7 5.3 1.5 7.6L12 18.3 5.2 22l1.5-7.6L1 8.1l7.6-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1l3.4 7.2 7.6.9-5.7 5.3 1.5 7.6L12 18.3 5.2 22l1.5-7.6L1 8.1l7.6-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1l3.4 7.2 7.6.9-5.7 5.3 1.5 7.6L12 18.3 5.2 22l1.5-7.6L1 8.1l7.6-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1l3.4 7.2 7.6.9-5.7 5.3 1.5 7.6L12 18.3 5.2 22l1.5-7.6L1 8.1l7.6-.9z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 1l3.4 7.2 7.6.9-5.7 5.3 1.5 7.6L12 18.3 5.2 22l1.5-7.6L1 8.1l7.6-.9z"/></svg>
+    </div>
+    <h1>Privater<span class="accent">Kochservice</span></h1>
+    <p class="hero-sub">Individuelle Küche für besondere Momente</p>
+    <p class="hero-desc">Sie möchten Ihre Gäste überraschen oder sich selbst einen besonderen Abend gönnen? Ich koche für Sie mit Leidenschaft und bereite individuelle Gerichte nach Ihren Wünschen zu – bei Ihnen zu Hause oder zur Abholung.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn btn-primary">Termin anfragen</a>
+      <a href="#preise" class="btn btn-outline">Preise ansehen</a>
+    </div>
+    <div class="hero-marks">
+      <div class="hero-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3v18M5 8h14M7 3h10"/></svg>Individuelle Menüabsprache</div>
+      <div class="hero-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>Frische Zutaten, höchste Qualität</div>
+      <div class="hero-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Vor Ort oder Abholung</div>
+      <div class="hero-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C1 8 2.5 5 6 5c2 0 3.5 1.2 4.5 2.5C11.5 6.2 13 5 15 5c3.5 0 5 3 4.5 7-2.5 4.5-7.5 9-7.5 9z"/></svg>Mit Leidenschaft gekocht</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÜBER MICH ============ -->
+<section data-theme="cream" id="ueber-mich">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-portrait">
+          <div class="about-portrait-inner">
+            <img src="images/portrait.jpeg" alt="Privater Kochservice – der Koch bei der Zubereitung" />
+          </div>
+          <!-- <div class="about-badge">
+            <strong>5.0</strong>
+            <span>Persönlicher Service</span>
+          </div>  -->
+        </div>
+      </div>
+
+      <div class="about-text reveal d2">
+        <div class="eyebrow">Über mich</div>
+        <h2>Mit Leidenschaft für Sie gekocht</h2>
+        <p class="lead">„Mein Ziel: hochwertiges Essen, persönlicher Service und ein kulinarisches Erlebnis, an das man sich gerne erinnert.“</p>
+        <p>Ich koche für Sie mit Leidenschaft und bereite individuelle Gerichte nach Ihren Wünschen zu – bei Ihnen zu Hause oder zur Abholung. Von der persönlichen Menüabsprache über die Beratung bei der Zutatenwahl bis zur frischen Zubereitung vor Ort: Sie erhalten ein rundum durchdachtes kulinarisches Erlebnis.</p>
+        <p>Mit Leidenschaft, Qualität und persönlichem Service möchte ich Ihnen ein besonderes Essenserlebnis bieten. Ich freue mich darauf, für Sie kochen zu dürfen.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3v18M5 8h14M7 3h10"/></svg>
+            <div><strong>Individuelle Menüabsprache</strong><p>Ihr Wunschgericht, persönlich geplant.</p></div>
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 21s-7-4.5-9.5-9C1 8 2.5 5 6 5c2 0 3.5 1.2 4.5 2.5C11.5 6.2 13 5 15 5c3.5 0 5 3 4.5 7-2.5 4.5-7.5 9-7.5 9z"/></svg>
+            <div><strong>Frische Zutaten</strong><p>Höchste Qualität, sorgfältig ausgewählt.</p></div>
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>
+            <div><strong>Vor Ort oder Abholung</strong><p>Flexibel, ganz nach Ihrem Wunsch.</p></div>
+          </div>
+          <div class="about-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            <div><strong>Mit Leidenschaft gekocht</strong><p>Jedes Gericht ein besonderer Moment.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEISTUNGEN ============ -->
+<section data-theme="dark" id="leistungen">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Leistungen</div>
+      <h2>Im Service enthalten</h2>
+      <p>Vom ersten Gespräch bis zur aufgeräumten Küche – so läuft die Zusammenarbeit ab.</p>
+    </div>
+
+    <div class="service-cols reveal d2">
+      <div class="service-col">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M9 11l3 3L22 4"/><path d="M22 12v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2h11"/></svg>Was ich übernehme</h3>
+        <ul class="checklist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Persönliche Menüabsprache</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Planung des Gerichts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Beratung bei der Auswahl der Zutaten</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Frische Zubereitung</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Eigenes Koch-Equipment bei Vor-Ort-Service</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Sauberes Hinterlassen der Küche</li>
+        </ul>
+      </div>
+      <div class="service-col">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 3l18 18M8 3v6M16 3v6M3 15h18"/></svg>Ausstattung &amp; Equipment</h3>
+        <div class="equip-note">
+          <h4>Ich bringe mit</h4>
+          <ul class="checklist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Eigene Messer</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Gewürze nach Bedarf</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Kochutensilien, falls beim Kunden nicht vorhanden</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Eigene Geräte je nach benötigter Zubereitung</li>
+          </ul>
+        </div>
+        <div class="equip-note">
+          <h4>Der Kunde stellt bei Bedarf</h4>
+          <ul class="checklist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Herd &amp; Backofen</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Arbeitsfläche zur Vorbereitung</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Teller, Besteck und Geschirr</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="prep-cards">
+      <div class="prep-card reveal d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>
+        <h4>Vor-Ort-Service</h4>
+        <p>Ich komme mit meinem eigenen Equipment zu Ihnen und bereite das gewünschte Gericht frisch bei Ihnen vor Ort zu.</p>
+      </div>
+      <div class="prep-card reveal d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M6 9V6a4 4 0 018 0v3M4 9h16l-1.5 11.5a2 2 0 01-2 1.5H7.5a2 2 0 01-2-1.5L4 9z"/></svg>
+        <h4>Abholung möglich</h4>
+        <p>Die fertig zubereiteten Speisen können nach vorheriger Terminabsprache bei mir abgeholt werden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HYGIENE / QUALITÄT ============ -->
+<section data-theme="cream">
+  <div class="wrap">
+    <div class="notice-grid reveal">
+      <div class="notice-col">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2l8 4v6c0 6-4 9-8 10-4-1-8-4-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>Hygiene &amp; Qualität</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Sauberes und hygienisches Arbeiten steht an erster Stelle.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Verwendung von frischen und sorgfältig ausgewählten Zutaten.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Fachgerechter Umgang mit Lebensmitteln.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>Der Arbeitsplatz wird nach der Zubereitung ordentlich hinterlassen.</li>
+        </ul>
+      </div>
+      <div class="notice-col">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 9v4M12 17h.01M10.3 3.9L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Wichtige Hinweise</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M9 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-3M18 2l4 4-11 11H7v-4L18 2z"/></svg>Änderungen der Personenanzahl oder des Menüs bitte frühzeitig mitteilen.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M9 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-3M18 2l4 4-11 11H7v-4L18 2z"/></svg>Für nicht mitgeteilte Allergien oder Unverträglichkeiten wird keine Haftung übernommen – bitte vorab informieren.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M9 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-3M18 2l4 4-11 11H7v-4L18 2z"/></svg>Der Kunde sorgt für Zugang zur Küche und ausreichend Platz zur Vorbereitung.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M9 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-3M18 2l4 4-11 11H7v-4L18 2z"/></svg>Nach erfolgtem Einkauf kann eine kurzfristige Absage Kosten für nicht mehr verwendbare Lebensmittel verursachen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREISE ============ -->
+<section data-theme="cream-2" id="preise">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Preise</div>
+      <h2>Leistungsübersicht &amp; Preisliste</h2>
+      <p>Transparente Kochpauschale, faire Einkaufsabwicklung und klar geregelte Anfahrt.</p>
+    </div>
+
+    <div class="price-table reveal d2">
+      <div class="price-head">
+        <h3>Kochpauschale</h3>
+        <p>Die Kochpauschale beinhaltet die Vorbereitung, Zubereitung der Speisen vor Ort sowie die Nutzung meines eigenen Koch-Equipments.</p>
+      </div>
+      <div class="price-rows">
+        <div class="price-row">
+          <div class="pl"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/></svg>1–2 Personen</div>
+          <div class="pr">ab 30&nbsp;€</div>
+        </div>
+        <div class="price-row">
+          <div class="pl"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>3–4 Personen</div>
+          <div class="pr">ab 60&nbsp;€</div>
+        </div>
+        <div class="price-row">
+          <div class="pl"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>5–6 Personen</div>
+          <div class="pr">ab 80&nbsp;€</div>
+        </div>
+        <div class="price-row">
+          <div class="pl"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>7–8 Personen</div>
+          <div class="pr">ab 130&nbsp;€</div>
+        </div>
+      </div>
+      <div class="price-note">
+        <strong style="color:var(--gold-light); font-family:'Fraunces',serif;">Ab 9 Personen:</strong> Individuelle Preisabsprache nach Aufwand. Der endgültige Preis richtet sich nach Personenanzahl, Gericht, Vorbereitungsaufwand und Dauer der Zubereitung.
+      </div>
+    </div>
+
+    <div class="extras-grid reveal d3">
+      <div class="extra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>
+        <h4>Anfahrt bis 15&nbsp;km</h4>
+        <p>Innerhalb von 15&nbsp;km ist die Anfahrt im Preis enthalten.</p>
+        <span class="fig">kostenfrei</span>
+      </div>
+      <div class="extra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2l2.4 6.6L21 10l-5 4.6L17.4 21 12 17.6 6.6 21 8 14.6 3 10l6.6-1.4z"/></svg>
+        <h4>Anfahrt ab 15&nbsp;km</h4>
+        <p>Für Entfernungen ab 15&nbsp;km. Weitere Strecken nach Absprache.</p>
+        <span class="fig">10&nbsp;€</span>
+      </div>
+      <div class="extra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+        <h4>Einkaufsservice</h4>
+        <p>Ich übernehme den kompletten Einkauf für Sie.</p>
+        <span class="fig">10&nbsp;€</span>
+      </div>
+    </div>
+
+    <div class="shop-variants reveal">
+      <div class="variant">
+        <span class="num">Variante 01</span>
+        <h4>Eigener Einkauf</h4>
+        <p>Sie erhalten von mir eine genaue Einkaufsliste und besorgen die benötigten Zutaten selbst.</p>
+      </div>
+      <div class="variant">
+        <span class="num">Variante 02</span>
+        <h4>Einkaufsservice</h4>
+        <p>Ich übernehme den kompletten Einkauf für Sie.</p>
+        <ul>
+          <li>Die Einkaufskosten richten sich nach Gericht, Qualität der Zutaten und Personenanzahl.</li>
+          <li>Der volle voraussichtliche Einkaufsbetrag wird vor dem Einkauf per Banküberweisung gezahlt.</li>
+          <li>Nach dem Einkauf erhalten Sie den Kassenbon.</li>
+          <li>Ist der tatsächliche Betrag niedriger, wird die Differenz verrechnet.</li>
+        </ul>
+        <span class="price-tag">Service: 10&nbsp;€</span>
+      </div>
+    </div>
+
+    <div class="fine-print reveal">
+      Es werden ausschließlich die Zutaten berechnet, die tatsächlich für das Gericht verwendet werden. Beispiel: Wird ein Sack Kartoffeln gekauft, aber für das Gericht werden nur 3 Kartoffeln benötigt, werden auch nur diese berechnet – nicht der komplette Sack.
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABLAUF / PLANUNG ============ -->
+<section data-theme="dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Planung &amp; Buchung</div>
+      <h2>So läuft die Buchung ab</h2>
+    </div>
+    <div class="steps reveal d2">
+      <div class="step">
+        <div class="dot">01</div>
+        <h4>Anfrage</h4>
+        <p>Termine bitte mindestens 7 Tage im Voraus anfragen.</p>
+      </div>
+      <div class="step">
+        <div class="dot">02</div>
+        <h4>Absprache</h4>
+        <p>Gemeinsam besprechen wir Ihre Wünsche, das gewünschte Gericht und den Ablauf.</p>
+      </div>
+      <div class="step">
+        <div class="dot">03</div>
+        <h4>Bestätigung</h4>
+        <p>Eine verbindliche Buchung erfolgt nach Bestätigung des Termins.</p>
+      </div>
+      <div class="step">
+        <div class="dot">04</div>
+        <h4>Zubereitung</h4>
+        <p>Bei Übernahme des Einkaufs erfolgt dieser erst nach Eingang des vollständigen Betrags.</p>
+      </div>
+    </div>
+
+    <div class="photo-band reveal" style="margin-top:70px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><rect x="2" y="6" width="20" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+      <p><strong>Fotos &amp; Werbung</strong>Fotos von Gerichten dürfen nur nach Zustimmung des Kunden für Referenzen, Werbung oder Social Media verwendet werden. Private Bereiche oder Personen werden ohne Erlaubnis nicht veröffentlicht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section data-theme="cream" id="galerie">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Galerie</div>
+      <h2>Ein Vorgeschmack</h2>
+      <p>Individuell geplant, frisch zubereitet, mit Liebe angerichtet.</p>
+    </div>
+    <div class="gallery-grid reveal d2">
+      <div class="gallery-card">
+        <img src="images/dish1.png" alt="Privater Kochservice – Geile Burger" />
+        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M38 40c6-8 20-9 26 0 5 8 9 20-2 27-8 5-18 2-24-6-6-7-6-16 0-21z" fill="#a8481f" opacity=".8"/><path d="M50 30c0-8 5-14 5-14s5 6 5 14-2 10-5 10-5-2-5-10z" fill="#4b6b3a" opacity=".7"/><circle cx="30" cy="60" r="5" fill="#a8481f" opacity=".7"/></svg> -->
+        <div class="tag">Geile Burger</div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/dish2.jpeg" alt="Privater Kochservice – Reis-Curry" />
+        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M30 55c10-14 40-14 40 5 0 12-14 16-24 10-8-5-18-8-16-15z" fill="#c9a15a" opacity=".55"/><circle cx="60" cy="38" r="6" fill="#4b6b3a" opacity=".7"/><circle cx="42" cy="35" r="4" fill="#a8481f" opacity=".7"/></svg> -->
+        <div class="tag">Reis-Curry</div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/dish3.jpeg" alt="Privater Kochservice – Herzhaftes Hauptgericht" />
+        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><rect x="30" y="42" width="40" height="18" rx="6" fill="#a8481f" opacity=".65"/><path d="M35 42c2-8 8-12 15-12s13 4 15 12" stroke="#c9a15a" stroke-width="1.2"/></svg> -->
+        <div class="tag">Herzhaftes Hauptgericht</div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/dish4.jpeg" alt="Privater Kochservice – Feine Beilagen" />
+        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><circle cx="50" cy="48" r="16" fill="#e8cd8a" opacity=".55"/><path d="M50 32v10M42 40l16 16" stroke="#a8481f" stroke-width="1.4"/></svg>-->
+        <div class="tag">Feine Beilagen</div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/dish5.jpeg" alt="Privater Kochservice – Frische Fleischgerichte" />
+        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M30 60c4-16 36-16 40 0-6 8-34 8-40 0z" fill="#4b6b3a" opacity=".6"/><circle cx="45" cy="46" r="4" fill="#a8481f" opacity=".7"/><circle cx="58" cy="50" r="3" fill="#c9a15a" opacity=".7"/></svg>-->
+        <div class="tag">Frische Fleischgerichte</div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/dish6.jpeg" alt="Privater Kochservice – Däftiger Abschluss" />
+        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M40 62c-4-14 4-26 10-26s14 12 10 26c-3 8-17 8-20 0z" fill="#c9a15a" opacity=".55"/><circle cx="50" cy="35" r="3" fill="#4b6b3a" opacity=".7"/></svg>-->
+        <div class="tag">Däftiger Abschluss</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZAHLUNG BAND ============ -->
+<section data-theme="dark">
+  <div class="wrap">
+    <div class="extras-grid reveal" style="grid-template-columns:1fr 1fr;">
+      <div class="prep-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        <h4>Zahlung Kochpauschale</h4>
+        <p>Die Zahlung erfolgt bar vor Beginn der Zubereitung vor Ort.</p>
+      </div>
+      <div class="prep-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.3"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        <h4>Zahlung Einkaufskosten</h4>
+        <p>Bei Übernahme des Einkaufs erfolgt die Zahlung des vollständigen Betrags vor dem Einkauf per Banküberweisung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section data-theme="dark" id="kontakt">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow">Kontakt</div>
+        <h2>Ich freue mich darauf, für Sie kochen zu dürfen.</h2>
+        <p>Termine bitte mindestens 7 Tage im Voraus anfragen. Gemeinsam besprechen wir Ihre Wünsche, das gewünschte Gericht und den Ablauf.</p>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.99.36 1.96.68 2.9a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.94.32 1.91.55 2.9.68A2 2 0 0122 16.92z"/></svg>
+            <div><span>Telefon</span>Auf Anfrage</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <div><span>E-Mail</span>Deinprivaterhobbykoch@gmail.com</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><span>Einsatzgebiet</span>Bis 15&nbsp;km kostenfrei, darüber nach Absprache</div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <div><span>Vorlaufzeit</span>Mindestens 7 Tage im Voraus</div>
+          </li>
+        </ul>
+      </div>
+      <form class="reveal d2" id="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Ihr vollständiger Name" required>
+          </div>
+          <div class="field">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="personen">Personenanzahl</label>
+            <select id="personen" name="personen">
+              <option>1–2 Personen</option>
+              <option>3–4 Personen</option>
+              <option>5–6 Personen</option>
+              <option>7–8 Personen</option>
+              <option>ab 9 Personen</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="art">Art des Services</label>
+            <select id="art" name="art">
+              <option>Vor-Ort-Service</option>
+              <option>Abholung</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="wunschtermin">Wunschtermin</label>
+          <input type="date" id="wunschtermin" name="wunschtermin">
+        </div>
+        <div class="field">
+          <label for="nachricht">Ihre Nachricht</label>
+          <textarea id="nachricht" name="nachricht" placeholder="Erzählen Sie mir von Ihrem Wunschmenü, Allergien oder Unverträglichkeiten …"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Anfrage senden</button>
+        <p class="form-foot">Für nicht mitgeteilte Allergien oder Unverträglichkeiten wird keine Haftung übernommen.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#c9a15a" stroke-width="1"/><path d="M24 12c-4 0-7 3-7 7 0 2 1 3.5 2 4.5-1 .5-1.5 1.5-1.5 2.5h13c0-1-.5-2-1.5-2.5 1-1 2-2.5 2-4.5 0-4-3-7-7-7z" stroke="#c9a15a" stroke-width="1.4"/></svg>
+          Privater Kochservice
+        </div>
+        <p style="max-width:320px; font-size:.9rem;">Individuelle Küche für besondere Momente – persönlich geplant, frisch zubereitet, mit Leidenschaft gekocht.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#ueber-mich">Über mich</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#preise">Preise</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service</h4>
+        <ul>
+          <li>Kochpauschale ab 30&nbsp;€</li>
+          <li>Einkaufsservice: 10&nbsp;€</li>
+          <li>Anfahrt bis 15&nbsp;km kostenfrei</li>
+          <li>Buchung ab 7 Tage im Voraus</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <a href="#" data-modal="impressum">Impressum</a>
+        <a href="#" data-modal="datenschutz">Datenschutz</a>
+      </div>
+      <div>© 2026 Privater Kochservice. Alle Rechte vorbehalten.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-overlay" id="modal-impressum">
+  <div class="modal">
+    <button class="modal-close" data-close>&times;</button>
+    <h3>Impressum</h3>
+    <p><strong>Angaben gemäß § 5 TMG</strong></p>
+    <p>Privater Kochservice 47798 Krefeld</p>
+    <p>Kontakt: Deinprivaterhobbykoch@gmail.com</p>
+    <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: der Betreiber dieser Website.</p>
+    <p style="font-size:.8rem; color:#8a7f6c;">Platzhaltertext – bitte durch die vollständigen, rechtlich erforderlichen Angaben ersetzen.</p>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-datenschutz">
+  <div class="modal">
+    <button class="modal-close" data-close>&times;</button>
+    <h3>Datenschutzerklärung</h3>
+    <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Personenbezogene Daten, die Sie über das Kontaktformular übermitteln, werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.</p>
+    <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten.</p>
+    <p style="font-size:.8rem; color:#8a7f6c;">Platzhaltertext – bitte durch eine vollständige, rechtlich geprüfte Datenschutzerklärung ersetzen.</p>
+  </div>
+</div>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // mobile nav
+  const burger = document.getElementById('burger');
+  const navlinks = document.getElementById('navlinks');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navlinks.classList.toggle('open');
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navlinks.classList.remove('open');
+  }));
+
+  // reveal on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // modals
+  document.querySelectorAll('[data-modal]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modal-' + link.dataset.modal).classList.add('open');
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.hasAttribute('data-close')) overlay.classList.remove('open');
+    });
+  });
+
+  // contact form (front-end only demo)
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    const original = btn.textContent;
+    btn.textContent = 'Anfrage gesendet ✓';
+    btn.style.background = '#e8cd8a';
+    setTimeout(() => { btn.textContent = original; btn.style.background = ''; this.reset(); }, 2600);
+  });
+</script>
+</body>
+</html>
