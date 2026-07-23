@@ -32,14 +32,21 @@
 
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  html, body{
+    overflow-x:hidden;
+    overflow-x:clip; /* stärker als hidden gegen mobile Scroll-Bugs; Fallback oben */
+    max-width:100%;
+    width:100%;
+  }
   body{
     font-family:'Work Sans', sans-serif;
     background:var(--cream);
     color:var(--ink);
     line-height:1.65;
-    overflow-x:hidden;
+    position:relative;
+    overflow-wrap:break-word;
+    word-break:break-word;
   }
-  html, body{ overflow-x:hidden; }
   h1,h2,h3,h4{
     font-family:'Fraunces', serif;
     font-weight:600;
@@ -148,6 +155,13 @@
   .burger.open span:nth-child(2){opacity:0;}
   .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
 
+  /* Wrapper um das mobile Menü: hält das ausklappende Panel innerhalb
+     des sichtbaren Viewports gefangen (overflow:hidden), damit es auf
+     iOS/Android nicht zu horizontalem Scrollen führt, wenn es per
+     transform nach rechts aus dem Bild geschoben wird. Auf Desktop ist
+     der Wrapper unsichtbar/transparent (display:contents). */
+  .nav-drawer{ display:contents; }
+
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
@@ -168,6 +182,7 @@
   .hero-plate{
     position:absolute; right:120px; top:50%; transform:translateY(-50%);
     width:640px; height:640px; opacity:.9;
+    max-width:100%;
   }
   .hero-plate img{width:100%;height:100%;object-fit:cover;object-position:center;display:block; }
   .hero-plate svg{width:100%;height:100%;}
@@ -244,30 +259,25 @@
     position:relative; border-radius:4px; overflow:hidden;
     aspect-ratio:4/5;
     background:linear-gradient(160deg,#241f1a,#0f0d0b);
-    /* display:flex; align-items:center; justify-content:center; */ 
     border:1px solid var(--line);
   }
  .about-portrait-inner{
   position:relative;
   width:100%;
   height:100%;
-  overflow:hidden;      /* schneidet das Bild an den Rand des Rahmens */
+  overflow:hidden;
   border-radius:2px;
-  border:1px solid rgba(201,161,90,0.35); /* das ist jetzt der eigentliche Goldrahmen */
+  border:1px solid rgba(201,161,90,0.35);
 }
 
 .about-portrait-inner img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center top; /* Bildausschnitt nach Bedarf anpassen */
+  object-position:center top;
   display:block;
 }
   .about-portrait svg{width:62%;}
-  /*.about-portrait::after{
-    content:"";
-    position:absolute; inset:14px; border:1px solid rgba(201,161,90,0.35); pointer-events:none;
-  }*/ 
   .about-badge{
     position:absolute; bottom:-26px; left:-26px;
     background:var(--gold); color:var(--black);
@@ -290,7 +300,7 @@
 
   /* ---------- SERVICES ---------- */
   .service-cols{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
-  .service-col{padding:52px 44px; position:relative;}
+  .service-col{padding:52px 44px; position:relative; min-width:0;}
   .service-col + .service-col{border-left:1px solid var(--line);}
   .service-col h3{font-size:1.3rem; color:var(--gold-light); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
   .service-col h3 svg{width:24px; height:24px; stroke:var(--gold);}
@@ -326,14 +336,14 @@
   .price-head p{color:var(--taupe); font-size:.94rem; max-width:520px;}
   .price-rows{padding:10px 44px 8px;}
   .price-row{
-    display:flex; justify-content:space-between; align-items:center;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
     padding:22px 0; border-bottom:1px solid rgba(201,161,90,0.14);
     transition:padding-left .3s var(--ease);
   }
   .price-row:hover{padding-left:8px;}
   .price-row:last-child{border-bottom:none;}
-  .price-row .pl{display:flex; align-items:center; gap:14px; font-size:1rem;}
-  .price-row .pl svg{width:20px;height:20px; stroke:var(--gold);}
+  .price-row .pl{display:flex; align-items:center; gap:14px; font-size:1rem; min-width:0;}
+  .price-row .pl svg{width:20px;height:20px; stroke:var(--gold); flex-shrink:0;}
   .price-row .pr{font-family:'Fraunces',serif; font-size:1.4rem; color:var(--gold-light); font-weight:600;}
   .price-note{padding:28px 44px 40px; color:var(--taupe); font-size:.88rem; border-top:1px solid var(--line); background:rgba(201,161,90,0.04);}
 
@@ -379,7 +389,7 @@
     border:1px solid var(--line);
     transition:transform .5s var(--ease);
   }
-  .gallery-card img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}  
+  .gallery-card img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
   .gallery-card:hover{transform:translateY(-6px);}
   .gallery-card svg{width:46%; transition:transform .6s var(--ease);}
   .gallery-card:hover svg{transform:scale(1.08);}
@@ -402,7 +412,7 @@
   .steps::before{
     content:""; position:absolute; top:24px; left:6%; right:6%; height:1px; background:var(--line);
   }
-  .step{position:relative; padding:0 22px; text-align:left;}
+  .step{position:relative; padding:0 22px; text-align:left; min-width:0;}
   .step .dot{
     width:48px; height:48px; border-radius:50%; background:var(--black); border:1px solid var(--gold);
     display:flex; align-items:center; justify-content:center;
@@ -445,11 +455,12 @@
     color:var(--cream); font-size:.96rem;
   }
   .contact-list li svg{width:20px; height:20px; stroke:var(--gold); flex-shrink:0; margin-top:2px;}
+  .contact-list li > div{min-width:0; overflow-wrap:anywhere; word-break:break-word;}
   .contact-list li span{color:var(--taupe); display:block; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px;}
 
   form{background:var(--charcoal); border:1px solid var(--line); border-radius:4px; padding:44px;}
   .form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
-  .field{margin-bottom:18px;}
+  .field{margin-bottom:18px; min-width:0;}
   .field label{
     display:block; font-size:.76rem; letter-spacing:.06em; text-transform:uppercase;
     color:var(--taupe); margin-bottom:8px; font-weight:600;
@@ -492,7 +503,7 @@
     border-radius:4px; padding:44px; position:relative; border:1px solid var(--gold);
   }
   .modal h3{font-size:1.5rem; margin-bottom:18px; color:var(--ink);}
-  .modal p{font-size:.92rem; color:#5a4f3f; margin-bottom:14px;}
+  .modal p{font-size:.92rem; color:#5a4f3f; margin-bottom:14px; overflow-wrap:anywhere;}
   .modal-close{
     position:absolute; top:20px; right:20px; background:none; border:none; cursor:pointer;
     font-size:1.4rem; color:#6b5f4d; line-height:1;
@@ -513,16 +524,29 @@
     .footer-grid{grid-template-columns:1fr; gap:36px;}
     .hero-plate{opacity:.35; width:480px; height:480px; right:-160px;}
     .prep-cards{grid-template-columns:1fr;}
-
   }
   @media (max-width: 720px){
+    /* Der Wrapper wird zum blickdichten, fixierten Rahmen, der das
+       Panel exakt am rechten Viewport-Rand einsperrt (overflow:hidden).
+       So kann .navlinks per transform nach rechts "hinausgeschoben"
+       werden, ohne dass der Dokumenten-Body dadurch breiter wird und
+       horizontal scrollt. */
+    .nav-drawer{
+      display:block;
+      position:fixed; top:0; right:0; height:100vh;
+      width:78%; max-width:320px;
+      overflow:hidden;
+      pointer-events:none;
+      z-index:1050;
+    }
     .navlinks{
-      position:fixed; top:0; right:0; height:100vh; width:78%; max-width:320px;
+      position:absolute; inset:0;
+      width:100%; height:100%;
       background:var(--black); flex-direction:column; justify-content:center; align-items:flex-start;
-      gap:26px; padding:0 40px; transform:translateX(100%); transition:transform .4s var(--ease);
+      gap:26px; padding:0 40px;
+      transform:translateX(100%); transition:transform .4s var(--ease);
       box-shadow:-10px 0 40px rgba(0,0,0,0.3);
-      .prep-cards{grid-template-columns:1fr;}
-
+      pointer-events:auto;
     }
     .navlinks.open{transform:translateX(0);}
     .burger{display:block;}
@@ -554,12 +578,14 @@
       </svg>
       <span>Privater Kochservice<em>Individuelle Küche</em></span>
     </a>
-    <div class="navlinks" id="navlinks">
-      <a href="#ueber-mich">Über mich</a>
-      <a href="#leistungen">Leistungen</a>
-      <a href="#preise">Preise</a>
-      <a href="#galerie">Galerie</a>
-      <a href="#kontakt" class="nav-cta">Termin anfragen</a>
+    <div class="nav-drawer">
+      <div class="navlinks" id="navlinks">
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#preise">Preise</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#kontakt" class="nav-cta">Termin anfragen</a>
+      </div>
     </div>
     <button class="burger" id="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
   </nav>
@@ -568,15 +594,6 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
   <div class="hero-plate" aria-hidden="true">
-    <!-- <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="200" cy="200" r="190" stroke="#c9a15a" stroke-opacity="0.35" stroke-width="1"/>
-      <circle cx="200" cy="200" r="150" stroke="#c9a15a" stroke-opacity="0.5" stroke-width="1"/>
-      <circle cx="200" cy="200" r="80" fill="#241f1a" stroke="#c9a15a" stroke-opacity="0.6"/>
-      <path d="M170 175c8-10 25-12 34-2 8 9 16 24 6 36-9 11-24 8-34-2-9-9-13-24-6-32z" fill="#a8481f" opacity="0.55"/>
-      <path d="M195 150c0-14 8-24 8-24s8 10 8 24-4 18-8 18-8-4-8-18z" fill="#4b6b3a" opacity="0.5"/>
-      <circle cx="150" cy="230" r="9" fill="#a8481f" opacity="0.5"/>
-      <circle cx="245" cy="220" r="6" fill="#c9a15a" opacity="0.55"/>
-    </svg> --> 
     <img src="images/burger.png" alt="Geiler Burger" />
   </div>
   <div class="hero-inner">
@@ -612,10 +629,6 @@
           <div class="about-portrait-inner">
             <img src="images/portrait.jpeg" alt="Privater Kochservice – der Koch bei der Zubereitung" />
           </div>
-          <!-- <div class="about-badge">
-            <strong>5.0</strong>
-            <span>Persönlicher Service</span>
-          </div>  -->
         </div>
       </div>
 
@@ -864,32 +877,26 @@
     <div class="gallery-grid reveal d2">
       <div class="gallery-card">
         <img src="images/dish5.jpeg" alt="Privater Kochservice – Geile Burger" />
-        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M38 40c6-8 20-9 26 0 5 8 9 20-2 27-8 5-18 2-24-6-6-7-6-16 0-21z" fill="#a8481f" opacity=".8"/><path d="M50 30c0-8 5-14 5-14s5 6 5 14-2 10-5 10-5-2-5-10z" fill="#4b6b3a" opacity=".7"/><circle cx="30" cy="60" r="5" fill="#a8481f" opacity=".7"/></svg> -->
         <div class="tag">Geile Burger</div>
       </div>
       <div class="gallery-card">
         <img src="images/dish2.jpeg" alt="Privater Kochservice – Nudel-Curry" />
-        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M30 55c10-14 40-14 40 5 0 12-14 16-24 10-8-5-18-8-16-15z" fill="#c9a15a" opacity=".55"/><circle cx="60" cy="38" r="6" fill="#4b6b3a" opacity=".7"/><circle cx="42" cy="35" r="4" fill="#a8481f" opacity=".7"/></svg> -->
         <div class="tag">Nudel-Curry</div>
       </div>
       <div class="gallery-card">
         <img src="images/dish3.jpeg" alt="Privater Kochservice – Herzhaftes Hauptgericht" />
-        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><rect x="30" y="42" width="40" height="18" rx="6" fill="#a8481f" opacity=".65"/><path d="M35 42c2-8 8-12 15-12s13 4 15 12" stroke="#c9a15a" stroke-width="1.2"/></svg> -->
         <div class="tag">Herzhaftes Hauptgericht</div>
       </div>
       <div class="gallery-card">
         <img src="images/dish4.jpeg" alt="Privater Kochservice – Feine Beilagen" />
-        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><circle cx="50" cy="48" r="16" fill="#e8cd8a" opacity=".55"/><path d="M50 32v10M42 40l16 16" stroke="#a8481f" stroke-width="1.4"/></svg>-->
         <div class="tag">Feine Beilagen</div>
       </div>
       <div class="gallery-card">
         <img src="images/dish1.jpeg" alt="Privater Kochservice – Frische Fleischgerichte" />
-        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M30 60c4-16 36-16 40 0-6 8-34 8-40 0z" fill="#4b6b3a" opacity=".6"/><circle cx="45" cy="46" r="4" fill="#a8481f" opacity=".7"/><circle cx="58" cy="50" r="3" fill="#c9a15a" opacity=".7"/></svg>-->
         <div class="tag">Frische Fleischgerichte</div>
       </div>
       <div class="gallery-card">
         <img src="images/dish6.jpeg" alt="Privater Kochservice – Däftiger Abschluss" />
-        <!-- <svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="50" rx="42" ry="42" stroke="#c9a15a" stroke-width="1"/><path d="M40 62c-4-14 4-26 10-26s14 12 10 26c-3 8-17 8-20 0z" fill="#c9a15a" opacity=".55"/><circle cx="50" cy="35" r="3" fill="#4b6b3a" opacity=".7"/></svg>-->
         <div class="tag">Däftiger Abschluss</div>
       </div>
     </div>
