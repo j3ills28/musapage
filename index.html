@@ -522,7 +522,12 @@
     .steps::before{display:none;}
     .notice-grid{grid-template-columns:1fr; gap:40px;}
     .footer-grid{grid-template-columns:1fr; gap:36px;}
-    .hero-plate{opacity:.35; width:480px; height:480px; right:-160px;}
+    .hero-plate{
+      opacity:.5;
+      width:min(48vw, 320px);
+      height:min(48vw, 320px);
+      right:16px;
+    }
     .prep-cards{grid-template-columns:1fr;}
   }
   @media (max-width: 720px){
@@ -549,6 +554,14 @@
       pointer-events:auto;
     }
     .navlinks.open{transform:translateX(0);}
+    .hero-plate{
+      opacity:.55;
+      width:min(52vw, 240px);
+      height:min(52vw, 240px);
+      right:12px;
+      top:20%;
+      transform:none;
+    }
     .burger{display:block;}
     .nav-cta{margin-top:10px;}
     section{padding:80px 0;}
@@ -594,7 +607,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
   <div class="hero-plate" aria-hidden="true">
-    <img src="images/burger.png" alt="Geiler Burger" />
+    <img src="images/steak.png" alt="Saftiges Steak" />
   </div>
   <div class="hero-inner">
     <div class="stars" aria-hidden="true">
@@ -963,11 +976,15 @@
           <div class="field">
             <label for="personen">Personenanzahl</label>
             <select id="personen" name="personen">
-              <option>1–2 Personen</option>
-              <option>3–4 Personen</option>
-              <option>5–6 Personen</option>
-              <option>7–8 Personen</option>
-              <option>ab 9 Personen</option>
+              <option>1 Person</option>
+              <option>2 Personen</option>
+              <option>3 Personen</option>
+              <option>4 Personen</option>
+              <option>5 Personen</option>
+              <option>6 Personen</option>
+              <option>7 Personen</option>
+              <option>8 Personen</option>
+              <option>9+ Personen</option>
             </select>
           </div>
           <div class="field">
